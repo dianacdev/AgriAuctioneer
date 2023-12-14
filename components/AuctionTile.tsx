@@ -1,39 +1,45 @@
 'use client'
 
+import Image from "next/image";
 import { useState } from "react"
 
 const AuctionTile = () => {
     const [infoStatus, setInfoStatus] = useState(false);
+    const [heartStatus, setHeartStatus] = useState(false);
 
     const handleInfo = () =>{
-        console.log('clicked');
+        console.log('info dropdown status updated!');
         if(infoStatus !== false) setInfoStatus(false);
         else setInfoStatus(true);
+    }
+    const handleHeart = () =>{
+        console.log('heart status updated!');
+        if(heartStatus !== false) setHeartStatus(false);
+        else setHeartStatus(true);
     }
     return ( 
         <div className="text-center w-1/2 min-h-1/2 bg-emerald-950 text-green-500 rounded-xl border-2 border-green-500 shadow-md shadow-green-500">
             {/* Image/Video, Favorite Section, Current Price Section, Carousel Section, and Timer Section */}
-            <div className="relative flex justify-center ">
+            <div className="relative flex justify-center">
                 {/* Timer Section */}
                 <div className="w-1/6 bg-emerald-900 rounded-full border-2 border-green-500 absolute p-1 top-[.75rem] font-medium text-xl">
                    Sold
                 </div>
                 {/* Favorite Section */}
-                <div className="absolute top-10 left-8 ">
-                    Heart Icon
+                <div onClick={() => handleHeart()} className="absolute top-12 left-10 hover:scale-110">
+                    <Image src={`${heartStatus ? '/icons/ActiveHeart.svg' : '/icons/DefaultHeart.svg'}`} width={36} height={36} alt="Click to favorite and unfavorite" />
                 </div>
                 {/* Image/Video Section */}
-                <div className="mx-6 my-8 rounded-md border-2 border-green-500 w-full h-full ">
-                    <div className=" aspect-video flex justify-center items-center bg-white">placeholder for image</div>
+                <div className="mx-6 my-8 rounded-md border-2 border-green-500 w-full h-full">
+                    <div className=" aspect-video flex justify-center items-center bg-neutral-400 text-white">placeholder for image</div>
                     {/* Carousel Section */}
                     <div className="">
-                        <div className="absolute top-1/2 left-10">
-                            Left Arrow
+                        <div className="absolute top-[40%] left-0 hover:scale-110 hover:bg-black/10 rounded-lg">
+                            <Image src="/icons/LeftArrowCircle.svg" width={48} height={48} alt="switch images" className="w-full h-full"/>
                         </div>
-                        <div className="absolute top-1/2 right-10">
-                            Right Arrow
+                        <div className="absolute top-[40%] right-0 hover:scale-110 hover:bg-black/10 rounded-lg">
+                            <Image src="/icons/RightArrowCircle.svg" width={36} height={36} alt="switch images" className="w-full h-full"/>
                         </div>
-
                     </div>
                 </div>
                 {/* Price Section */}
@@ -42,7 +48,10 @@ const AuctionTile = () => {
                 </div>
             </div>
             {/* Information Section */}
-            <div onClick={() => handleInfo()} >Arrow dropdown for more info...
+            <div  onClick={() => handleInfo()} >
+                <div className="flex justify-center items-center scale-110 hover:scale-125 ">
+                    <Image src= {`${infoStatus ? '/icons/UpArrow.svg' : '/icons/DownArrow.svg'}`} width={36} height={36} alt="Click for more info"/>
+                </div>
                 <div className={`${infoStatus ? 'grid' : 'hidden'} p-8 text-amber-50 border-2 border-green-500 m-6 rounded-lg `}>
                     <div className="grid grid-cols-2 gap-4">
                         {/* Animal Specs Section */}

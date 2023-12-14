@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="b" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" width="48.702" height="27.089" viewBox="0 0 48.702 27.089">
+  <g id="c" data-name="Layer 3">
+    <g id="d" data-name="Up Arrow Double">
+      <g>
+        <path d="m4.953,19.587c2.004.4,7.453.833,10.661-5.225,0,0-2.34-.829-5.042-.321L24.437.356h0l4.706,4.738L7.887,26.075l-7.535-1.946,4.602-4.542Z" fill="#fffbeb" stroke="#fff" stroke-linecap="round" stroke-linejoin="bevel"/>
+        <path d="m43.749,19.589c-2.004.4-7.453.833-10.661-5.225,0,0,2.34-.829,5.042-.321L24.266.358h0l-4.706,4.738,21.256,20.981,7.535-1.946-4.602-4.542Z" fill="#fffbeb" stroke="#fff" stroke-linecap="round" stroke-linejoin="bevel"/>
+      </g>
+      <g>
+        <path d="m18.747,24.136c.579.153,2.153.318,3.08-1.997,0,0-.676-.317-1.457-.123l4.005-5.229h0l1.36,1.811-6.141,8.018-2.177-.744,1.33-1.736Z" fill="#fffbeb" stroke="#fff" stroke-linecap="round" stroke-linejoin="bevel"/>
+        <path d="m29.955,24.137c-.579.153-2.153.318-3.08-1.997,0,0,.676-.317,1.457-.123l-4.005-5.229h0l-1.36,1.811,6.141,8.018,2.177-.744-1.33-1.736Z" fill="#fffbeb" stroke="#fff" stroke-linecap="round" stroke-linejoin="bevel"/>
+      </g>
+    </g>
+  </g>
+</svg>
