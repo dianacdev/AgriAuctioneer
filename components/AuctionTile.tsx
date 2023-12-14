@@ -1,5 +1,15 @@
+'use client'
+
+import { useState } from "react"
 
 const AuctionTile = () => {
+    const [infoStatus, setInfoStatus] = useState(false);
+
+    const handleInfo = () =>{
+        console.log('clicked');
+        if(infoStatus !== false) setInfoStatus(false);
+        else setInfoStatus(true);
+    }
     return ( 
         <div className="text-center w-1/2 min-h-1/2 bg-emerald-950 text-green-500 rounded-xl border-2 border-green-500 shadow-md shadow-green-500">
             {/* Image/Video, Favorite Section, Current Price Section, Carousel Section, and Timer Section */}
@@ -32,8 +42,8 @@ const AuctionTile = () => {
                 </div>
             </div>
             {/* Information Section */}
-            <div className="group">Arrow dropdown for more info...
-                <div className="group-hover:grid hidden p-8 text-amber-50 border-2 border-green-500 m-6 rounded-lg">
+            <div onClick={() => handleInfo()} >Arrow dropdown for more info...
+                <div className={`${infoStatus ? 'grid' : 'hidden'} p-8 text-amber-50 border-2 border-green-500 m-6 rounded-lg `}>
                     <div className="grid grid-cols-2 gap-4">
                         {/* Animal Specs Section */}
                         <div className="text-justify">
@@ -60,7 +70,7 @@ const AuctionTile = () => {
                     </div>
                     {/* Additonal Info Section */}
                     <div className="py-8">
-                        Additonal Information Section
+                        Additonal Information
                     </div>
                 </div>
             </div>
