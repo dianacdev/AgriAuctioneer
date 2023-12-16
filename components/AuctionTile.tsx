@@ -85,13 +85,13 @@ const AuctionTile = () => {
             </div>
             {/* Bidding Section */}
             <div className="grid grid-cols-2 gap-4 m-6 text-amber-50">
-                <div className="flex">
-                    <button className="mx-4">Minus Icon</button>
-                    <p className="font-semibold text-2xl">$500</p>
-                    <button className="mx-4">Plus Icon</button>
+                <div className="flex justify-center items-center">
+                    <Image src={"/icons/Minus.svg"} width={24} height={24} alt="Reduce Bid Amount" className=" w-full h-full hover:scale-110"/>
+                    <p className="font-semibold text-3xl">$5,000</p>
+                    <Image src={"/icons/Plus.svg"} width={24} height={24} alt="Increase Bid Amount" className="w-full h-full hover:scale-110" />
                 </div>
-                <div className="flex justify-end">
-                    <button className="rounded-full bg-rose-500 border-2 border-rose-800 text-3xl font-semibold w-1/2">Bid</button>
+                <div className="flex justify-end items-center">
+                    <button className="rounded-full bg-rose-500 border-2 border-rose-800 text-3xl font-semibold w-1/2 h-1/2">Bid</button>
                 </div>
             </div>
         </div>
