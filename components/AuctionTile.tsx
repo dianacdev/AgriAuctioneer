@@ -3,7 +3,21 @@
 import Image from "next/image";
 import { useState } from "react"
 
-const AuctionTile = () => {
+interface AutionTileProps{
+    lot: number;
+    tag: string;
+    dob: string;
+    address: string;
+    farmName: string;
+    phoneNumber: string;
+    species: string;
+    subSpecies: string;
+    moreInfo: string;
+    animalsMom: string;
+    animalsDad: string;
+}
+
+const AuctionTile: React.FC<AutionTileProps> = ({lot, dob, species, subSpecies, farmName, phoneNumber, tag, address, moreInfo, animalsMom, animalsDad}) => {
     const [infoStatus, setInfoStatus] = useState(false);
     const [heartStatus, setHeartStatus] = useState(false);
 
@@ -18,11 +32,22 @@ const AuctionTile = () => {
         else setHeartStatus(true);
     }
     return ( 
-        <div className="text-center w-1/2 min-h-1/2 bg-emerald-950 text-green-500 rounded-xl border-2 border-green-500 shadow-md shadow-green-500">
+        <div className="
+        text-center 
+        m-2
+        bg-agri-green-300 
+        text-agri-green-100 
+        rounded-xl 
+        border-2 
+        border-agri-green-100 
+        shadow-md 
+        shadow-agri-green-100
+        flex flex-col
+        ">
             {/* Image/Video, Favorite Section, Current Price Section, Carousel Section, and Timer Section */}
             <div className="relative flex justify-center">
                 {/* Timer Section */}
-                <div className="w-1/6 bg-emerald-900 rounded-full border-2 border-green-500 absolute p-1 top-[.75rem] font-medium text-xl">
+                <div className="w-1/6 bg-agri-green-200 rounded-full border-2 border-agri-green-100 absolute p-1 top-[.75rem] font-medium text-xl">
                    Sold
                 </div>
                 {/* Favorite Section */}
@@ -30,12 +55,12 @@ const AuctionTile = () => {
                     <Image src={`${heartStatus ? '/icons/ActiveHeart.svg' : '/icons/DefaultHeart.svg'}`} width={36} height={36} alt="Click to favorite and unfavorite" />
                 </div>
                 {/* Image/Video Section */}
-                <div className="mx-6 my-8 rounded-md border-2 border-green-500 w-full h-full">
-                    <div className=" aspect-video flex justify-center items-center bg-neutral-400 text-white">placeholder for image</div>
+                <div className="mx-6 my-8 w-full h-full">
+                    <div className=" aspect-video flex justify-center items-center bg-neutral-400 text-white object-cover border-2 border-agri-green-100 rounded-md">placeholder for image</div>
                     {/* Carousel Section */}
                     <div className="">
                         <div className="absolute top-[40%] left-0 hover:scale-110 hover:bg-black/10 rounded-lg">
-                            <Image src="/icons/LeftArrowCircle.svg" width={48} height={48} alt="switch images" className="w-full h-full"/>
+                            <Image src="/icons/LeftArrowCircle.svg" width={36} height={36} alt="switch images" className="w-full h-full"/>
                         </div>
                         <div className="absolute top-[40%] right-0 hover:scale-110 hover:bg-black/10 rounded-lg">
                             <Image src="/icons/RightArrowCircle.svg" width={36} height={36} alt="switch images" className="w-full h-full"/>
@@ -49,49 +74,71 @@ const AuctionTile = () => {
             </div>
             {/* Information Section */}
             <div  onClick={() => handleInfo()} >
-                <div className="flex justify-center items-center scale-110 hover:scale-125 ">
+                <div className="flex justify-center items-center scale-110 hover:scale-125">
                     <Image src= {`${infoStatus ? '/icons/UpArrow.svg' : '/icons/DownArrow.svg'}`} width={36} height={36} alt="Click for more info"/>
                 </div>
-                <div className={`${infoStatus ? 'grid' : 'hidden'} p-8 text-amber-50 border-2 border-green-500 m-6 rounded-lg `}>
+                <div className={`${infoStatus ? 'grid' : 'hidden'} p-8 text-amber-50 border-2 border-agri-green-100 m-6 rounded-lg `}>
                     <div className="grid grid-cols-2 gap-4">
                         {/* Animal Specs Section */}
-                        <div className="text-justify">
+                        <div className="text-justify leading-relaxed">
                             <div className="grid grid-cols-2">
-                                <ul>Lot Number</ul>
-                                <ul>Tag Number</ul>
+                                <ul>Lot: {lot}</ul>
+                                <ul>Tag: {tag}</ul>
                             </div>
                             <div className="grid grid-cols-2">
-                                <ul>Species</ul>
-                                <ul>Species Sub Type</ul>
+                                <ul>{species}</ul>
+                                <ul>{subSpecies}</ul>
                             </div>
                             <div>
-                                <ul>Date of Birth</ul>
-                                <ul>Animals Father</ul>
-                                <ul>Animals Mother</ul>
+                                <ul>{dob}</ul>
+                                <ul>Father: {animalsDad}</ul>
+                                <ul>Mother: {animalsMom}</ul>
                             </div>
                         </div>
                         {/* Farm Specs Section */}
                         <div className="text-right">
-                            <ul>Farm Name</ul>
-                            <ul>Contact Number</ul>
-                            <ul>Address</ul>
+                            <ul>{farmName}</ul>
+                            <ul>{phoneNumber}</ul>
+                            <ul>{address}</ul>
                         </div>
                     </div>
                     {/* Additonal Info Section */}
                     <div className="py-8">
                         Additonal Information
+                        {moreInfo}
                     </div>
                 </div>
             </div>
             {/* Bidding Section */}
-            <div className="grid grid-cols-2 gap-4 m-6 text-amber-50">
-                <div className="flex justify-center items-center">
-                    <Image src={"/icons/Minus.svg"} width={24} height={24} alt="Reduce Bid Amount" className=" w-full h-full hover:scale-110"/>
-                    <p className="font-semibold text-3xl">$5,000</p>
-                    <Image src={"/icons/Plus.svg"} width={24} height={24} alt="Increase Bid Amount" className="w-full h-full hover:scale-110" />
+            <div className="grid grid-cols-2 gap-6 mx-12 text-amber-50">
+                <div className="flex justify-center items-center ">
+                    <Image src={"/icons/Minus.svg"} width={18} height={18} alt="Reduce Bid Amount" className=" w-full h-full hover:scale-110 "/>
+                    <p className="font-semibold text-2xl m-[-.75rem] ">$5,000</p>
+                    <Image src={"/icons/Plus.svg"} width={18} height={18} alt="Increase Bid Amount" className="w-full h-full hover:scale-110" />
                 </div>
-                <div className="flex justify-end items-center">
-                    <button className="rounded-full bg-rose-500 border-2 border-rose-800 text-3xl font-semibold w-1/2 h-1/2">Bid</button>
+                <div className="flex justify-end items-center pl-6">
+                    <button
+                        className="
+                        rounded-full
+                        bg-scarlet-100
+                        border-2
+                        border-scarlet-200
+                        text-4xl
+                        font-semibold
+                        w-full h-1/2
+                        hover:scale-110 shadow-md">
+                        Bid
+                    </button>
+                </div>
+                <div className="flex justify-start items-center mb-4 ">
+                    <div className="font-light text-sm">
+                        Number of Bids: 01
+                    </div>
+                </div>
+                <div className="flex justify-end items-center mb-4 ">
+                    <div className="font-light text-sm underline hover:text-agri-blue-100">
+                        Bid Settings
+                    </div>
                 </div>
             </div>
         </div>

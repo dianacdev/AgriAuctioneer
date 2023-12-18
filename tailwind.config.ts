@@ -8,6 +8,24 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors:{
+        'scarlet': {
+          100: '#DA1444',
+          200: '#641326',
+        },
+        'agri-blue':{
+          100: '#14AADA',
+          200: '#153445',
+        },
+        'agri-yellow' : {
+          100: '#DAA314'
+        },
+        'agri-green':{
+          100: '#14DA62',
+          200: '#12493A',
+          300: '#0C281F'
+        },
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
