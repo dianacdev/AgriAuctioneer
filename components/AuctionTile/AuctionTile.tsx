@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 
 import FavoriteButton from "./FavoriteButton";
-import AuctionInfoDropDown from "./AuctionInfoDropDown";
 import AuctionTileCarousel from "./AuctionTileCarousel";
+import AuctionBidPanel from "./AuctionBidPanel";
 
 interface AutionTileProps {
   lot: number;
@@ -33,9 +34,17 @@ const AuctionTile: React.FC<AutionTileProps> = ({
   animalsMom,
   animalsDad,
 }) => {
+  const [infoStatus, setInfoStatus] = useState(false);
+
+  const handleInfo = () => {
+    console.log("info dropdown status updated!");
+    if (infoStatus !== false) setInfoStatus(false);
+    else setInfoStatus(true);
+  };
+
   return (
     <div
-      className={`
+      className={`${infoStatus ? "expandedbrick" : "brick"}
         text-center
         bg-agri-green-300 
         text-amber-50 
@@ -45,82 +54,75 @@ const AuctionTile: React.FC<AutionTileProps> = ({
         shadow-md 
         shadow-agri-green-100
         w-full
-        `}
+      `}
     >
       {/* Image/Video, Favorite Section, Current Price Section, Carousel Section, and Timer Section */}
       <div className="relative flex justify-center">
         {/* Timer Section */}
         <div
-          className={`w-1/6 bg-agri-green-200 rounded-full border-2 border-agri-green-100 text-agri-green-100 absolute p-1 top-[.75rem] font-medium text-xl`}
+          className={`w-1/3 bg-agri-green-200 rounded-full border-2 border-agri-green-100 text-agri-green-100 absolute p-1 top-[.75rem] font-medium text-xl`}
         >
           10m 20s
         </div>
         {/* Favorite Section */}
         <FavoriteButton />
         {/* Image/Video Section & Carousel section*/}
-        <AuctionTileCarousel/>
+        <AuctionTileCarousel />
         {/* Price Section */}
         <div className=" font-semibold text-3xl text-amber-50 border-2 border-green-500 absolute rounded-md bottom-8 right-6 p-2 bg-black/75 shadow-md shadow-slate-800 ">
           $550
         </div>
       </div>
       {/* Information Section */}
-      <AuctionInfoDropDown
-        tag={tag}
-        lot={lot}
-        address={address}
-        dob={dob}
-        species={species}
-        subSpecies={subSpecies}
-        farmName={farmName}
-        phoneNumber={phoneNumber}
-        moreInfo={moreInfo}
-        animalsDad={animalsDad}
-        animalsMom={animalsMom}
-      />
-      {/* Bidding Section */}
-      <div className="grid grid-cols-2 gap-6 mx-12 text-amber-50">
-        <div className="flex justify-center items-center ">
+      <div onClick={() => handleInfo()}>
+        <div className="flex justify-center items-center scale-110 hover:scale-125">
           <Image
-            src={"/icons/Minus.svg"}
-            width={18}
-            height={18}
-            alt="Reduce Bid Amount"
-            className=" w-full h-full hover:scale-110 "
-          />
-          <p className="font-semibold text-2xl m-[-.75rem] ">$5,000</p>
-          <Image
-            src={"/icons/Plus.svg"}
-            width={18}
-            height={18}
-            alt="Increase Bid Amount"
-            className="w-full h-full hover:scale-110"
+            src={`${
+              infoStatus ? "/icons/UpArrow.svg" : "/icons/DownArrow.svg"
+            }`}
+            width={36}
+            height={36}
+            alt="Click for more info"
           />
         </div>
-        <div className="flex justify-end items-center pl-6">
-          <button
-            className="
-                        rounded-full
-                        bg-scarlet-100
-                        border-2
-                        border-scarlet-200
-                        text-4xl
-                        font-semibold
-                        w-full h-1/2
-                        hover:scale-110 shadow-md"
-          >
-            Bid
-          </button>
-        </div>
-        <div className="flex justify-start items-center mb-4 ">
-          <div className="font-light text-sm">Number of Bids: 01</div>
-        </div>
-        <div className="flex justify-end items-center mb-4 ">
-          <div className="font-light text-sm underline hover:text-agri-blue-100">
-            Bid Settings
+        <div
+          className={`${
+            infoStatus ? "block" : "hidden"
+          } p-8 text-amber-50 border-2 border-agri-green-100 m-6 rounded-lg`}
+        >
+          <div className="grid grid-cols-2 gap-4">
+            {/* Animal Specs Section */}
+            <div className="text-justify leading-relaxed">
+              <div className="grid grid-cols-2">
+                <ul>Lot: {lot}</ul>
+                <ul>Tag: {tag}</ul>
+              </div>
+              <div className="grid grid-cols-2">
+                <ul>{species}</ul>
+                <ul>{subSpecies}</ul>
+              </div>
+              <div>
+                <ul>DOB: {dob}</ul>
+                <ul>Father: {animalsDad}</ul>
+                <ul>Mother: {animalsMom}</ul>
+              </div>
+            </div>
+            {/* Farm Specs Section */}
+            <div className="text-right">
+              <ul>{farmName}</ul>
+              <ul>{phoneNumber}</ul>
+              <ul>{address}</ul>
+            </div>
+          </div>
+          {/* Additonal Info Section */}
+          <div className="py-8">
+            Additonal Information
+            {moreInfo}
           </div>
         </div>
       </div>
+      {/* Bidding Section */}
+      <AuctionBidPanel />
     </div>
   );
 };

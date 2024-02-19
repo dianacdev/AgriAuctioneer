@@ -2,10 +2,11 @@
 
 import Image from "next/image";
 
+
 const AuctionTileCarousel = () => {
   return (
     // Image/Video Section
-    <div className="mx-6 my-8 w-full h-full">
+    <div className="mx-6 my-8 w-full h-full block">
     <div className=" aspect-video flex justify-center items-center bg-neutral-400 text-white object-cover border-2 border-agri-green-100 rounded-md">
       placeholder for image
     </div>

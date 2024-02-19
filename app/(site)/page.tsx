@@ -3,7 +3,7 @@ import AuctionTile from "@/components/AuctionTile/AuctionTile"
 export default function Home() {
   return (
     <main className=" min-h-screen items-center justify-between p-24">
-      <div className="gap-8 columns-3 gap-y-6 ">
+      <div className="grid masonery gap-8">
         <AuctionTile
           lot={1}
           tag="23"
