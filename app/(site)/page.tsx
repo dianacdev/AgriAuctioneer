@@ -1,9 +1,14 @@
+import AnimalForm from "@/components/AnimalForm"
+import AuctionPreview from "@/components/AuctionPreview"
 import AuctionTile from "@/components/AuctionTile/AuctionTile"
 
 export default function Home() {
   return (
-    <main className=" min-h-screen items-center justify-between p-24">
-      <div className="grid masonery gap-8">
+    <main className=" min-h-screen items-center justify-between p-20">
+      <div>
+        <AuctionPreview/>
+      </div>
+      {/* <div className="grid masonery gap-8">
         <AuctionTile
           lot={1}
           tag="23"
@@ -82,7 +87,7 @@ export default function Home() {
           animalsMom="Kahuna"
           animalsDad="Maui"
         />
-      </div>
+      </div> */}
     </main>
   )
 }

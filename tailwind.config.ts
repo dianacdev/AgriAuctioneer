@@ -16,6 +16,7 @@ const config: Config = {
         'agri-blue':{
           100: '#14AADA',
           200: '#153445',
+          300: '#152c45'
         },
         'agri-yellow' : {
           100: '#DAA314'

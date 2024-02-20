@@ -50,7 +50,10 @@ body {
           grid-template-rows: masonry;
         }
         .brick{
-          block-size: 1fr;
+          block-size: 100%;
+        }
+        .previewbrick{
+          block-size: 100%;
         }
       }
 
@@ -63,7 +66,10 @@ body {
         grid-template-rows: masonry;
       }
       .brick{
-        block-size: 1fr;
+        block-size: 100%;
+      }
+      .previewbrick{
+        block-size: 100%;
       }
     }
 
@@ -77,7 +83,10 @@ body {
       }
 
       .brick{
-        block-size: 45vh;
+        block-size: 600px;
+      }
+      .previewbrick{
+        block-size: 32rem;
       }
     }
 
@@ -91,7 +100,10 @@ body {
     }
 
     .brick{
-      block-size: 45vh;
+      block-size: 550px;
+    }
+    .previewbrick{
+      block-size: 480px;
     }
   }
 
@@ -105,7 +117,10 @@ body {
     }
 
     .brick{
-      block-size: 40vh;
+      block-size: 550px;
+    }
+    .previewbrick{
+      block-size: 480px;
     }
   }
 

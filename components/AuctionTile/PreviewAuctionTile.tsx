@@ -5,34 +5,34 @@ import { useState } from "react";
 
 import FavoriteButton from "./FavoriteButton";
 import AuctionTileCarousel from "./AuctionTileCarousel";
-import AuctionBidPanel from "./AuctionBidPanel";
+
 
 interface AuctionTileProps {
-  lot: number;
-  tag: string;
-  dob: string;
-  address: string;
-  farmName: string;
-  phoneNumber: string;
-  species: string;
-  subSpecies: string;
-  moreInfo: string;
-  animalsMom: string;
-  animalsDad: string;
-}
+    lot: number;
+    tag: string;
+    dob: string;
+    address: string;
+    farmName: string;
+    phoneNumber: string;
+    species: string;
+    subSpecies: string;
+    moreInfo: string;
+    animalsMom: string;
+    animalsDad: string;
+  }
 
-const AuctionTile: React.FC<AuctionTileProps> = ({
-  lot,
-  dob,
-  species,
-  subSpecies,
-  farmName,
-  phoneNumber,
-  tag,
-  address,
-  moreInfo,
-  animalsMom,
-  animalsDad,
+const PreviewAuctionTile: React.FC<AuctionTileProps> = ({
+    lot,
+    dob,
+    species,
+    subSpecies,
+    farmName,
+    phoneNumber,
+    tag,
+    address,
+    moreInfo,
+    animalsMom,
+    animalsDad,
 }) => {
   const [infoStatus, setInfoStatus] = useState(false);
 
@@ -44,15 +44,15 @@ const AuctionTile: React.FC<AuctionTileProps> = ({
 
   return (
     <div
-      className={`${infoStatus ? "expandedbrick" : "brick"}
+      className={`${infoStatus ? "expandedbrick" : "previewbrick"}
         text-center
-        bg-agri-green-300 
+        bg-sky-950
         text-amber-50 
         rounded-xl 
         border-2 
-        border-agri-green-100
+        border-agri-blue-100
         shadow-md 
-        shadow-agri-green-100
+        shadow-agri-blue-100
         w-full
       `}
     >
@@ -60,16 +60,16 @@ const AuctionTile: React.FC<AuctionTileProps> = ({
       <div className="relative flex justify-center">
         {/* Timer Section */}
         <div
-          className={`w-1/3 bg-agri-green-200 rounded-full border-2 border-agri-green-100 text-agri-green-100 absolute p-1 top-[.75rem] font-medium text-xl`}
+          className={`w-1/3 bg-agri-blue-200 rounded-full border-2 border-agri-blue-100 text-agri-blue-100 absolute p-1 top-[.75rem] font-semibold  text-2xl`}
         >
-          10m 20s
+          Preview
         </div>
         {/* Favorite Section */}
         <FavoriteButton />
         {/* Image/Video Section & Carousel section*/}
-        <AuctionTileCarousel borderColor="border-agri-green-100"/>
+        <AuctionTileCarousel borderColor="border-agri-blue-100"/>
         {/* Price Section */}
-        <div className=" font-semibold text-3xl text-amber-50 border-2 border-green-500 absolute rounded-md bottom-8 right-6 p-2 bg-black/75 shadow-md shadow-slate-800 ">
+        <div className=" font-semibold text-3xl text-amber-50 border-2 border-agri-blue-100 absolute rounded-md bottom-8 right-6 p-2 bg-black/75 shadow-md shadow-slate-800 ">
           $550
         </div>
       </div>
@@ -88,7 +88,7 @@ const AuctionTile: React.FC<AuctionTileProps> = ({
         <div
           className={`${
             infoStatus ? "block" : "hidden"
-          } p-8 text-amber-50 border-2 border-agri-green-100 m-6 rounded-lg`}
+          } p-8 text-amber-50 border-2 border-agri-blue-100 bg-agri-blue-300  m-6 rounded-lg`}
         >
           <div className="grid grid-cols-2 gap-4">
             {/* Animal Specs Section */}
@@ -121,10 +121,12 @@ const AuctionTile: React.FC<AuctionTileProps> = ({
           </div>
         </div>
       </div>
-      {/* Bidding Section */}
-      <AuctionBidPanel />
+      {/* Edit Section */}
+      <div className="bg-agri-blue-200 rounded-full m-4 p-1 border-agri-blue-100 border-2 text-amber-50 font-semibold text-xl hover:scale-105 mt-12">
+        Edit
+      </div>
     </div>
   );
 };
 
-export default AuctionTile;
+export default PreviewAuctionTile
