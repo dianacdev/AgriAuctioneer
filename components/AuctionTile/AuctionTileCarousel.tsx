@@ -3,11 +3,15 @@
 import Image from "next/image";
 
 
-const AuctionTileCarousel = () => {
+interface auctionCarouselProps{
+  borderColor: string;
+}
+
+const AuctionTileCarousel: React.FC<auctionCarouselProps> = ({borderColor}) => {
   return (
     // Image/Video Section
     <div className="mx-6 my-8 w-full h-full block">
-    <div className=" aspect-video flex justify-center items-center bg-neutral-400 text-white object-cover border-2 border-agri-green-100 rounded-md">
+    <div className={`${borderColor} aspect-video flex justify-center items-center bg-neutral-400 text-white object-cover border-2 rounded-md`}>
       placeholder for image
     </div>
     {/* Carousel Section */}

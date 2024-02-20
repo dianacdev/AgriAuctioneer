@@ -13,7 +13,9 @@ const Navbar = () => {
           className='w-1/4 m-4 hover:scale-105 rounded-md'
           />
       </a>
-      <div>Home</div>
+      <div className='flex justify-end items-center pr-6 '>
+        <div className='bg-agri-green-100 rounded-full w-10 h-10 flex justify-center items-center hover:scale-105'>A</div>
+      </div>
     </div>
   )
 }
